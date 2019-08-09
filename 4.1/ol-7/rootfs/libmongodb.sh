@@ -165,7 +165,6 @@ mongodb_create_config() {
 #   $3 - Database where to run the queries
 #   $4 - Host (default to result of get_mongo_hostname function)
 #   $5 - Port (default $MONGODB_PORT_NUMBER)
-#   $6 - Extra arguments (default $MONGODB_CLIENT_EXTRA_FLAGS)
 # Returns:
 #   None
 ########################
@@ -175,7 +174,7 @@ mongodb_execute() {
     local database="${3:-}"
     local host="${4:-$(get_mongo_hostname)}"
     local port="${5:-$MONGODB_PORT_NUMBER}"
-    local extra_args="${6:-$MONGODB_CLIENT_EXTRA_FLAGS}"
+    local extra_args="$MONGODB_CLIENT_EXTRA_FLAGS"
     local result
 
     # If password is empty it means no auth, do not specify user
